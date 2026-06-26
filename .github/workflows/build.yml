@@ -1,0 +1,33 @@
+name: Build Totem Mod ARM64
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up NDK
+      uses: android-actions/setup-ndk@v3
+      with:
+        ndk-version: r26b
+
+    - name: Compile C++ Code
+      run: |
+        $ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang++ \
+        -shared \
+        -o liba03_totem_refill.so \
+        main.cpp \
+        -llog -landroid
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: a03-totem-refill-mod
+        path: liba03_totem_refill.so
