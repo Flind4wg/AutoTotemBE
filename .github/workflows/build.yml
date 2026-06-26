@@ -29,5 +29,5 @@ jobs:
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: a03-totem-refill-mod
+        name: AutoTotemBE
         path: AutoTotemBE.so
