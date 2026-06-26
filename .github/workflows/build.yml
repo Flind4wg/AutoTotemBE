@@ -22,7 +22,7 @@ jobs:
         $ANDROID_NDK_LATEST_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android34-clang++ \
         -shared \
         -fPIC \
-        -o liba03_totem_refill.so \
+        -o AutoTotemBE.so \
         main.cpp \
         -llog -landroid
 
@@ -30,4 +30,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: a03-totem-refill-mod
-        path: liba03_totem_refill.so
+        path: AutoTotemBE.so
